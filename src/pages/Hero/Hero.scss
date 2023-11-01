@@ -1,0 +1,68 @@
+
+.hero {
+    padding: 23px 23px;
+    width: 100vw;
+}
+
+.hero__contents {
+    width: 100%; 
+    height: 70vh;
+    position: relative; 
+  
+    
+    & img {
+        height: 100%; 
+        width: 100%; 
+        object-fit: cover;
+    }
+
+    & .hero__contents-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute; 
+
+        top: 180px; 
+        left: 100px;
+
+        color: white; 
+
+        & span {
+            margin-bottom: 16px;
+            color: rgb(240,243,244); 
+        }
+
+        & span:nth-child(1) {
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: white;
+        }
+
+        & span:nth-child(2) {
+            font-size: 20px;
+        }
+        & span:nth-child(3) {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+
+
+    }
+    
+}
+
+
+
+
+@media (min-width: 601px) {
+    .hero {
+        max-width: 1440px; 
+        margin: 0 auto;
+    }
+}
+
+
+//https://www.pexels.com/photo/man-in-front-of-the-mirror-3693143/
+

@@ -1,0 +1,101 @@
+.signIn {
+    margin-top: 4rem;
+    height: 95vh; 
+    width: 100vw; 
+    padding: 32px;
+    color: rgb(17, 17, 17); 
+}
+
+
+.signIn__form {
+    & > span:nth-of-type(1){
+        font-size: 24px; 
+        color: rgb(17,17,17); 
+        margin-bottom: 2rem;
+        font-weight: 400;
+    }
+
+    & > span:nth-of-type(2) {
+        font-size: 14px;
+        color: #111111; 
+        margin-bottom: 32px;
+    }
+
+    .signIn__form-group {
+        & label {
+            font-size: 14px;
+            letter-spacing: .2px;
+            line-height: 18px;
+        }
+
+        & .signIn__form-group {
+            margin: 0 auto;
+            width: 800px;
+        }
+
+        & .signIn__textBox {
+            margin: 6px auto 0; 
+            //margin-top: 6px;
+            height: 48px; 
+            border: 1px solid #cbcbcb;
+            background-color: rgb(255,255,255);
+            margin-bottom: 24px;
+            //max-width: 720px;
+            
+
+            & input {
+                border: none;
+                width: 100%; 
+                height: 100%;  
+                padding: 0 10px;
+
+            }
+        }
+    }
+}
+
+
+
+
+.form__button-container {
+    width: 100%; 
+}
+
+.form__button {
+    border: none; 
+    width: 100%; 
+    height: 48px;
+    font-size: 14px;
+    font-weight: 400; 
+    cursor: pointer;
+} 
+.form__button-stylesBlack{
+    background-color: black;
+    color: white; 
+}
+
+.form__button-stylesWhite {
+    background-color: #fff; 
+    border: 1px solid #111;
+    color: rgb(17, 17, 17); 
+}
+
+
+
+.signin__option {
+    text-align: center;
+
+    & span {
+        padding: 24px 0; 
+        color: #111; 
+        font-size: 18px;
+        font-weight: 400;
+    }
+}
+
+@media (min-width: 769px) {  
+    .signIn {
+        max-width: 800px; 
+        margin: 23px auto;
+    }
+}

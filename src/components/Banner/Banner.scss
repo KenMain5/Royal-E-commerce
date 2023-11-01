@@ -1,0 +1,16 @@
+.banner {
+    height: 4vh;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: #fff; 
+   
+    // background-color: rgb(255, 212, 194); 
+}
+
+.messagesList {
+    font-size: 14px;
+}
