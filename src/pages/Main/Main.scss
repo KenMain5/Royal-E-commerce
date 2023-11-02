@@ -1,5 +1,24 @@
 .main {
     margin-bottom: 40px;
+    & .sortByOption {
+        position: fixed;
+        width: 50rem; 
+        height: 50rem; 
+        top: 50%; 
+        left: 50%; 
+
+    }
+    // & .filtersOption {
+    //     width: 20rem;
+    //     height: 40rem;
+    //     margin: 0 auto;
+    //     background-color: black;
+    //     z-index: 2000; 
+
+    //     & span {
+    //         display: absolute; 
+    //     }
+    // }
 }
 
 .options {
@@ -33,6 +52,11 @@
 }
 
 
+
+//will make it unable for the user to scroll 
+// body {
+//     overflow: hidden;
+// }
 
 
 
@@ -148,6 +172,7 @@
 
     .itemCard__FavoriteIcon {
         cursor: pointer;
+        z-index: 80; 
 
         & svg {
             background-color: white;
@@ -157,7 +182,7 @@
 
 .itemCard__icon {
     cursor: pointer;
-    z-index: 100;
+    z-index: 500;
     // once clicked, color: bisque; 
 }
 

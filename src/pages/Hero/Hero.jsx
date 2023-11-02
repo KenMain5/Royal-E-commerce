@@ -6,6 +6,7 @@ function Hero() {
   return (
     <section className='hero'>
         <div className='hero__contents'>
+          
           <img src={heroPicture} alt="picture of a model in a classy expensive suit" />
           <div className='hero__contents-text'>
             <span>the names to know in menswear</span>
