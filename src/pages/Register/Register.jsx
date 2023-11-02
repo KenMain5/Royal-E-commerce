@@ -1,6 +1,7 @@
 import React from 'react'
 import './Register.scss'
 import SectionDivider from '/src/components/sectionDivider/SectionDivider'
+import { Link } from 'react-router-dom';
 
 
 function Register() {
@@ -56,7 +57,12 @@ function Register() {
         <SectionDivider/>
         <div className='register__option'>
             <span>Already have an account</span>
-            <div className='form__button-container'><button className='form__button form__button-stylesWhite'>Sign In</button></div>
+
+            <div className='form__button-container'>
+              <Link to='/signin'>
+                <button className='form__button form__button-stylesWhite'>Sign In</button>
+              </Link>
+            </div>
         </div>
        
     </section>

@@ -1,7 +1,8 @@
 import React from 'react'
 import './SignIn.scss'
-import { useState } from 'react'
 import SectionDivider from '/src/components/sectionDivider/SectionDivider'
+import { Link } from 'react-router-dom';
+
 
 
 function SignIn() {
@@ -23,13 +24,19 @@ function SignIn() {
               </div>
             </div>
             <span>Forgot your password?</span>
-            <div className='form__button-container '><button className='form__button form__button-stylesBlack' type='submit'>Sign In</button></div>
+            <div className='form__button-container '>
+              <button className='form__button form__button-stylesBlack' type='submit'>Sign In</button>
+            </div>
             {/* <SectionDivider/> */}
         </form>
         <SectionDivider/>
         <div className='signin__option'>
             <span>Don't have an account?</span>
-            <div className='form__button-container'><button className='form__button form__button-stylesWhite'>Create Account</button></div>
+            <div className='form__button-container'>
+              <Link to='/register'>
+                <button className='form__button form__button-stylesWhite'>Create Account</button>
+              </Link>
+            </div>
         </div>
        
     </section>
