@@ -86,19 +86,19 @@ function Main() {
             </div>
             {/* Right */}
             <div className='options__fullScreen-right'>
-                <div>
-                  <span>{allItems}</span>
+                <div className='options__block'>
+                  <span>Testing {allItems}</span>
                 </div>
-                <div>
-                  <span>{finalPrice}</span>
+                <div className='options__block'>
+                  <span>Testing {finalPrice}</span>
                 </div>
-                {/* <div className='options__block'>
+                <div className='options__block'>
                   <span>15 products</span>
                 </div>
                 <div className='options__block'>
                   <div className='options__icon'><AddSharpIcon/></div>
                   <span>Sort By</span>
-              </div> */}
+              </div>
             </div>
           </div>
           
