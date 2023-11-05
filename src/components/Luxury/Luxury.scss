@@ -1,0 +1,26 @@
+.showcase__container {
+    margin: 160px 160px; 
+    display: flex; 
+    gap: 8rem;
+
+
+    & .showcase__column {
+        text-align: center;
+
+        & h4 {
+            margin: 16px 0;
+            font-weight: 400;
+        }
+
+        & span {
+            font-size: 13px;
+            color: #656565;
+        }
+
+        & .showcase__icon svg{
+            font-size: 32px;
+            color: #656565;
+
+        }
+    }
+}

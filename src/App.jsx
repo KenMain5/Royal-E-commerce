@@ -7,6 +7,7 @@ import SignIn from "./pages/SignIn/SignIn"
 import Offer from "./components/Offer/Offer"
 import Register from "./pages/Register/Register"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Luxury from "./components/Luxury/Luxury"
 
 function App() {
   return (
@@ -18,13 +19,12 @@ function App() {
               <Navbar/>
               <Hero/>
               <Main/>
-              <Banner/>
-              <Navbar/>
-              <SignIn/>
+              
+              {/* <Luxury/> */}
               <Offer/>
-              <Navbar/>
-              <Register/>
-              <Offer/>
+             
+            
+              
           </div>
         }/>
 

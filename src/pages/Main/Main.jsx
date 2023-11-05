@@ -86,12 +86,13 @@ function Main() {
             </div>
             {/* Right */}
             <div className='options__fullScreen-right'>
-                <div className='options__block'>
+            {/* ----------------Testing--------------- */}
+                {/* <div className='options__block'>
                   <span>Testing {allItems}</span>
                 </div>
                 <div className='options__block'>
                   <span>Testing {finalPrice}</span>
-                </div>
+                </div> */}
                 <div className='options__block'>
                   <span>15 products</span>
                 </div>
