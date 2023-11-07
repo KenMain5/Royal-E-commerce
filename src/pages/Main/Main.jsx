@@ -18,9 +18,44 @@ function Main() {
 
   //Filter button that would prompt filter options to pop out
   const [openFilterBox, setOpenFilterBox] = useState(false); 
-  const handleFilterClick = function(){
-      setOpenFilterBox(!openFilterBox);
+
+  const [openSortBox, setOpenSortBox] = useState(false); 
+
+  //receives a setter and currentState and toggles the currentState boolean value
+  const toggle = (componentSetter, componentState) => {
+    componentSetter(!componentState); 
   };
+
+  // const filters = () => {
+  //   if (true) {
+  //     FEATURED.sort((a, b) => {
+  //       if (a.price < b.price) {
+  //         return -1; 
+  //       } else if ( b.price < a.price) {
+  //         return 1; 
+  //       } else {
+  //         return 0; 
+  //       }
+  //     });
+  //   }
+  // };
+
+
+  
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
 
   //Keeps track of what is favorited, UI change
   const [cart, setCart] = useState([]); 
@@ -42,15 +77,14 @@ function Main() {
     }
   };
 
+  
+
+
+
 
 
   return (
     <main className='main'>
-            {/* <div className='sortByOption' style={{display: (!openFilterBox) ? 'none': 'initial'}}>
-                <span>a</span>
-                <span>a</span>
-                <span>a</span>
-            </div> */}
         <div className='options'>
             {/* <div className='filtersOption' style={{display: (!openFilterBox) ? 'none': 'absolute'}} >
                 <span>Accessories</span>
@@ -69,14 +103,23 @@ function Main() {
               <div className='options__icon'><AddSharpIcon/></div>
               <span>Sort By</span>
             </div>
+            
           </div> 
           
           <div className='options__fullScreen'>
             {/* Left */}
             <div className='options__fullScreen-left'>
-              <div className='options__block'>
+              <div className='options__block' onClick={() => toggle(setOpenFilterBox, openFilterBox)} >
                 <div className='options__icon'><AddSharpIcon/></div>
                 <span>Categories</span>
+              </div>
+              <div className='sortByOption option-left' style={{display: (openFilterBox) ? 'flex': 'none'}}>
+             
+                  <span>Clear</span>
+                  <span>Clothing</span>
+                  <span>Bags</span>
+                  <span>Tie</span>
+             
               </div>
 
               <div className='options__block'>
@@ -96,9 +139,14 @@ function Main() {
                 <div className='options__block'>
                   <span>15 products</span>
                 </div>
-                <div className='options__block'>
+                <div className='options__block' onClick={() => {toggle(setOpenSortBox, openSortBox)}}>
                   <div className='options__icon'><AddSharpIcon/></div>
                   <span>Sort By</span>
+              </div>
+              <div className='sortByOption option-right' style={{display: (openSortBox) ? 'flex': 'none'}}>
+                  <span>New Items</span>
+                  <span>Price (low-high)</span>
+                  <span>Price (high-low)</span>
               </div>
             </div>
           </div>
