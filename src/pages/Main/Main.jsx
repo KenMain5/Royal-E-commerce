@@ -126,7 +126,6 @@ function Main() {
               <div className='options__icon'><AddSharpIcon/></div>
               <span>Sort By</span>
             </div>
-            
           </div> 
           
           <div className='options__fullScreen'>
@@ -160,7 +159,7 @@ function Main() {
                   <span>Testing {finalPrice}</span>
                 </div> */}
                 <div className='options__block'>
-                  <span>15 products</span>
+                  <span>{itemOrder.length} products</span>
                 </div>
                 <div className='options__block' onClick={() => {toggle(setOpenSortBox, openSortBox)}}>
                   <div className='options__icon'><AddSharpIcon/></div>
