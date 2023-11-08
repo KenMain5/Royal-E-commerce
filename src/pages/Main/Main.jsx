@@ -16,27 +16,50 @@ function Main() {
   const finalPrice = useSelector((state) => state.totalPrice.value)
   const allItems = useSelector((state) => state.cart.value)
 
-  //Filter button that would prompt filter options to pop out
+  //states that prompt specific filter options to pop out 
   const [openFilterBox, setOpenFilterBox] = useState(false); 
-
   const [openSortBox, setOpenSortBox] = useState(false); 
+
+  //manage the display of items within the component's state.
+  const [itemOrder, setItemOrder] = useState(FEATURED); 
+
+  //
+  const [filter, setFilter] = useState('');
+  const [sort, setSort] = useState(''); 
 
   //receives a setter and currentState and toggles the currentState boolean value
   const toggle = (componentSetter, componentState) => {
     componentSetter(!componentState); 
   };
 
-  // const filters = () => {
-  //   if (true) {
-  //     FEATURED.sort((a, b) => {
-  //       if (a.price < b.price) {
-  //         return -1; 
-  //       } else if ( b.price < a.price) {
-  //         return 1; 
-  //       } else {
-  //         return 0; 
+  // const filterItems= (value) => {
+  //   if (filterOrder === 'clothing') {
+  //      let filteredFEATURED = FEATURED.filter((item) => {
+  //       if (item.category === 'clothing') {
+  //        return item; 
   //       }
-  //     });
+  //       }); 
+  //       setItemOrder('asc');
+      
+  //   }
+  // };
+
+  // const sortItemsFunction = (value) => {
+  //   console.log('sorts items'); 
+  // };
+
+  // const sortItems = (sortOrder) => {
+  //   if (sortOrder === 'asc') {
+  //     let FEATUREDARRAY
+  //     FEATURED.sort((a, b) => {
+  //       //       if (a.price < b.price) {
+  //       //         return -1; 
+  //       //       } else if ( b.price < a.price) {
+  //       //         return 1; 
+  //       //       } else {
+  //       //         return 0; 
+  //       //       }
+  //       //     });
   //   }
   // };
 
@@ -116,7 +139,7 @@ function Main() {
               <div className='sortByOption option-left' style={{display: (openFilterBox) ? 'flex': 'none'}}>
              
                   <span>Clear</span>
-                  <span>Clothing</span>
+                  <span onClick ={() => filterItems('clothing')} >Clothing</span>
                   <span>Bags</span>
                   <span>Tie</span>
              
@@ -154,7 +177,7 @@ function Main() {
         </div>
         <div className='main__contents'>
              <div className='main__contents-items'>
-                {FEATURED.map((item) => (
+                {itemOrder.map((item) => (
                   <div className="itemCard" key={item.id}>
                     <div className='itemCard__img'><img src={item.url}></img></div>
                     <div className='itemCard__title'>

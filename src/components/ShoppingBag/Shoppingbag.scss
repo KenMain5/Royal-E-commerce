@@ -1,8 +1,58 @@
 .shoppingbag {
-    // height would be changed
-    height: 80vh; 
+   
 }
 
 .shoppingbag__header {
+    margin: 100px 34px; 
+
+    & .shoppingbag__img {
+        width: 280px; 
+        height: auto; 
+        margin: 0 auto; 
+        margin-bottom: 30px;
     
+        & img {
+            height: 100%; 
+            width: 100%; 
+            object-fit: contain;
+        }
+    }
+
+    & .shoppingbag__text {
+        margin: 0 auto; 
+        max-width: 250px;
+        text-align: center;
+
+        & h4 {
+            margin-bottom: 16px;
+        }
+
+        & span {
+            font-size: 14px;
+            margin-bottom: 24px;
+
+        }
+
+    }
+
+    & .shoppingbag__button {
+        width: fit-content;
+        margin: 0 auto; 
+        padding: 8px;
+
+        & a {
+            border-bottom: 1px solid rgb(223, 223, 223); 
+            font-size: 14px;
+            transition: .8s ease all; 
+
+            &:hover {
+                border-bottom: 1px solid rgb(0, 0, 0); 
+
+            }
+            
+        }
+
+    }
+
+
 }

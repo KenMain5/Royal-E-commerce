@@ -8,7 +8,7 @@ import Offer from "./components/Offer/Offer"
 import Register from "./pages/Register/Register"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Luxury from "./components/Luxury/Luxury"
-
+import Shoppingbag from "./components/ShoppingBag/Shoppingbag"
 function App() {
   return (
     <Router>
@@ -42,6 +42,15 @@ function App() {
               <Banner/>
               <Navbar/>
               <SignIn/>
+              <Offer/>
+          </div>
+        }/>
+
+          <Route path='/shoppingbag' element={
+          <div>
+              <Banner/>
+              <Navbar/>
+              <Shoppingbag/>
               <Offer/>
           </div>
         }/>

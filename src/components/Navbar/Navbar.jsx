@@ -36,7 +36,10 @@ function Navbar() {
                 <SearchSharpIcon/>
               </div>
               <div className='navbar__icon'>
-                <WorkOutlineIcon/>
+                <Link to="/shoppingbag">
+                  <WorkOutlineIcon/>
+                </Link>
+            
               </div>
               <div className='navbar__icon'>
                 <Link to='/signin'>
