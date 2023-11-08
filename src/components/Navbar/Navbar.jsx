@@ -27,11 +27,9 @@ function Navbar() {
                 <span>Accessories</span>
                 <span>Sale</span>
               </div>
-             
           </div>
 
           <div className='navbar__icons'>
-              
               <div className='navbar__icon'>
                 <SearchSharpIcon/>
               </div>

@@ -1,3 +1,10 @@
+nav {
+    position: sticky;
+    top: 0; 
+    z-index: 30; 
+    background-color: white;
+}
+
 .navbar__container {
     display: flex; 
     justify-content: space-between;
@@ -5,6 +12,8 @@
     height: 4.7rem; 
     padding: 7px 0; 
     border-bottom: 1px solid #4f4f4f; 
+    
+    
 
     & .navbar__links {
         font-size: 12px;
