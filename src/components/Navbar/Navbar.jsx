@@ -20,7 +20,6 @@ function Navbar() {
           <div className='navbar__links'>
               <div className='navbar__links fullScreen'>
                 <span>New Arrivals</span>
-                <span>Designers</span>
                 <span>Clothing</span>
                 <span>Shoes</span>
                 <span>Bags</span>

@@ -23,13 +23,66 @@ function Main() {
   //manage the display of items within the component's state.
   const [itemOrder, setItemOrder] = useState(FEATURED); 
 
-  //
+  //manages the current filter order
   const [filter, setFilter] = useState('');
   const [sort, setSort] = useState(''); 
 
   //receives a setter and currentState and toggles the currentState boolean value
-  const toggle = (componentSetter, componentState) => {
+  const toggle = (componentSetter, componentState, oppositeSetter) => {
     componentSetter(!componentState); 
+    oppositeSetter(false); 
+    
+  };  
+
+  const filterItems = (filterOrder) => {
+    setOpenFilterBox(!openFilterBox); 
+    if (filterOrder === 'clothing') {
+      setFilter('clothing');
+
+    }
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+  //function for sorting
+  const sortItems = (sortOrder) => {
+    setOpenSortBox(!openSortBox); 
+    if (sortOrder === 'ascending') {
+      let itemOrderCopy = [...itemOrder];
+      itemOrderCopy.sort((a, b) => {
+        if (a.price < b.price) {
+        return -1; 
+        } else if (a.price > b.price) {
+        return 1; 
+        } else {
+        return 0; 
+        }});
+      setItemOrder(itemOrderCopy);
+    } else if (sortOrder === 'descending'){
+      let itemOrderCopy = [...itemOrder];
+      itemOrderCopy.sort((a, b) => {
+        if (a.price > b.price) {
+        return -1; 
+        } else if (a.price < b.price) {
+        return 1; 
+        } else {
+        return 0; 
+        }
+      });
+      setItemOrder(itemOrderCopy);
+      setOpenSortBox(!openSortBox); 
+    } else {
+      setItemOrder(FEATURED);
+    }
   };
 
   // const filterItems= (value) => {
@@ -48,20 +101,7 @@ function Main() {
   //   console.log('sorts items'); 
   // };
 
-  // const sortItems = (sortOrder) => {
-  //   if (sortOrder === 'asc') {
-  //     let FEATUREDARRAY
-  //     FEATURED.sort((a, b) => {
-  //       //       if (a.price < b.price) {
-  //       //         return -1; 
-  //       //       } else if ( b.price < a.price) {
-  //       //         return 1; 
-  //       //       } else {
-  //       //         return 0; 
-  //       //       }
-  //       //     });
-  //   }
-  // };
+  
 
 
   
@@ -131,17 +171,15 @@ function Main() {
           <div className='options__fullScreen'>
             {/* Left */}
             <div className='options__fullScreen-left'>
-              <div className='options__block' onClick={() => toggle(setOpenFilterBox, openFilterBox)} >
+              <div className='options__block' onClick={() => toggle(setOpenFilterBox, openFilterBox, setOpenSortBox)} >
                 <div className='options__icon'><AddSharpIcon/></div>
                 <span>Categories</span>
               </div>
               <div className='sortByOption option-left' style={{display: (openFilterBox) ? 'flex': 'none'}}>
-             
-                  <span>Clear</span>
+                  <span onClick ={() => filterItems('clear')}>Clear</span>
                   <span onClick ={() => filterItems('clothing')} >Clothing</span>
-                  <span>Bags</span>
-                  <span>Tie</span>
-             
+                  <span onClick ={() => filterItems('bags')}>Bags</span>
+                  <span onClick ={() => filterItems('tie')}>Tie</span>
               </div>
 
               <div className='options__block'>
@@ -151,24 +189,20 @@ function Main() {
             </div>
             {/* Right */}
             <div className='options__fullScreen-right'>
-            {/* ----------------Testing--------------- */}
-                {/* <div className='options__block'>
-                  <span>Testing {allItems}</span>
-                </div>
-                <div className='options__block'>
-                  <span>Testing {finalPrice}</span>
-                </div> */}
                 <div className='options__block'>
                   <span>{itemOrder.length} products</span>
                 </div>
-                <div className='options__block' onClick={() => {toggle(setOpenSortBox, openSortBox)}}>
+                <div className='options__block' onClick={() => {toggle(setOpenSortBox, openSortBox, setOpenFilterBox)}}>
                   <div className='options__icon'><AddSharpIcon/></div>
                   <span>Sort By</span>
+                  {/* <div className='addToCart'>
+                      <span>added to cart</span>
+                  </div> */}
               </div>
               <div className='sortByOption option-right' style={{display: (openSortBox) ? 'flex': 'none'}}>
-                  <span>New Items</span>
-                  <span>Price (low-high)</span>
-                  <span>Price (high-low)</span>
+                  <span onClick={() => sortItems('clear')}>New Items</span>
+                  <span onClick={() => sortItems('ascending')}>Price (low-high)</span>
+                  <span onClick={() => sortItems('descending')}>Price (high-low)</span>
               </div>
             </div>
           </div>
