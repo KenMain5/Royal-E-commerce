@@ -10,6 +10,7 @@ function SignIn() {
   const [emailAddress, setEmailAddress] = useState(''); 
   const [password, setPassword] = useState(''); 
 
+  
   const handleInputChange = (state, stateHandler) => {
     stateHandler(state); 
   };

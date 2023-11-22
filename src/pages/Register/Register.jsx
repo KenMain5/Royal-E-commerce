@@ -6,19 +6,40 @@ import axios from 'axios';
 import { useState } from 'react';
 
 function Register() {
+
+   //State, StateSetter, Specifications: 
+   //Errors: Enter a valid Email
+   //Errors: '.' is used at the wrong position
   const [emailAddress, setEmailAddress] = useState(''); 
+
+   //State, StateSetter, Specifications: 
+   //Error: Must be 8 characters or more
+   //Error: Your password must contain at least one number
+   //Error: Your password must contain at least one uppercase letter
+   //Gray: Your password must be eight characters or more and contain an uppercase letter and number
+
   const [password, setPassword] = useState(''); 
+
+   //State, StateSetter, Specifications: 
   const [firstName, setFirstName] = useState(''); 
   const [lastName, setLastName] = useState(''); 
+
+  //State, StateSetter, Specifications: 
   const [dayDOB, setDayDOB] = useState(''); 
   const [monthDOB, setMonthDOB] = useState(''); 
   const [yearDOB, setYearDOB] = useState(); 
 
+  //function that updates the state
   const handleInputChange = (state, stateHandler) => {
     stateHandler(state); 
   };
 
+  
+
+
+
    
+  //function to send the data to the server
   const sendData = (event) => {
     event.preventDefault(); 
    
@@ -51,9 +72,13 @@ function Register() {
         <span>Register</span>
             <div className='register__form-group'>
               <label htmlFor='emailAddress'>Email Address</label>
+              
               <div className='register__textBox'>
                 <input value={emailAddress} type='text' onChange={(e) => {handleInputChange(e.target.value, setEmailAddress)}} id='emailAddress' name='emailAddress'></input>
+                {/* <span className='emailError'>Enter a valid Email</span> */}
               </div>
+              
+              
             </div>
            
             <div className='register__form-group'>

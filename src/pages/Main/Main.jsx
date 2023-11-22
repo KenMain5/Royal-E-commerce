@@ -44,8 +44,10 @@ function Main({navbarOptions}) {
       let result = newFiltered.filter((item) => item.category === filterOrder);
       setItemOrder(result);
     }
-    setOpenFilterBox(!openFilterBox); 
+    setOpenFilterBox(false); 
   };
+
+  
 
   //function for sorting
   const sortItems = (sortOrder) => {
@@ -107,46 +109,6 @@ function Main({navbarOptions}) {
         else if (navbarOptions === 4) filterItems('tie');
       }
     } ,[navbarOptions]); 
-
-
-  
-
-
-  // const filterItems= (value) => {
-  //   if (filterOrder === 'clothing') {
-  //      let filteredFEATURED = FEATURED.filter((item) => {
-  //       if (item.category === 'clothing') {
-  //        return item; 
-  //       }
-  //       }); 
-  //       setItemOrder('asc');
-      
-  //   }
-  // };
-
-  // const sortItemsFunction = (value) => {
-  //   console.log('sorts items'); 
-  // };
-
-
-
-  
-
-
-  
-
-
-
-
-
- 
-
-
-
-
-
-
-
 
 
   //Keeps track of what is favorited, UI change
@@ -218,6 +180,9 @@ function Main({navbarOptions}) {
             </div>
             {/* Right */}
             <div className='options__fullScreen-right'>
+                <div className='addedToCartNotif'>
+                    <span>The item was added to your cart</span>
+                </div>
                 <div className='options__block'>
                   <span>{itemOrder.length} products</span>
                 </div>
