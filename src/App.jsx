@@ -9,19 +9,15 @@ import Register from "./pages/Register/Register"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Luxury from "./components/Luxury/Luxury"
 import Shoppingbag from "./components/ShoppingBag/Shoppingbag"
+import Mainpage from "./pages/Mainpage/Mainpage"
+
 function App() {
   return (
     <Router>
       <Routes>
         <Route path='/' element={
           <div>
-              <Banner/>
-              <Navbar/>
-              <Hero/>
-              <Main/>
-              
-              {/* <Luxury/> */}
-              <Offer/>
+              <Mainpage />
              
             
               

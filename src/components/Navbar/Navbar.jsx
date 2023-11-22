@@ -6,7 +6,7 @@ import MenuSharpIcon from '@mui/icons-material/MenuSharp';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import { Link } from 'react-router-dom';
 
-function Navbar() {
+function Navbar({handleNavbarClick}) {
   return (
     <nav>
       <div className="navbar__wrapper">
@@ -19,12 +19,12 @@ function Navbar() {
           
           <div className='navbar__links'>
               <div className='navbar__links fullScreen'>
-                <span>New Arrivals</span>
-                <span>Clothing</span>
-                <span>Shoes</span>
-                <span>Bags</span>
-                <span>Accessories</span>
-                <span>Sale</span>
+                <span onClick={() => handleNavbarClick(0)}>New Arrivals</span>
+                <span onClick={() => handleNavbarClick(1)}>Clothing</span>
+                <span onClick={() => handleNavbarClick(2)}>Shoes</span>
+                <span onClick={() => handleNavbarClick(3)}>Bags</span>
+                <span onClick={() => handleNavbarClick(4)}>Accessories</span>
+                <span onClick={() => handleNavbarClick(5)}>Sale</span>
               </div>
           </div>
 

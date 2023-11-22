@@ -81,7 +81,7 @@
 .main__contents-items {
     display: grid; 
     grid-template-columns: 1fr 1fr; 
-    margin: 46px auto;
+    margin: 46px 18px;
     gap: 12px;
 }
 
@@ -180,9 +180,10 @@
     .main__contents-items {
         grid-template-columns: repeat(4, 1fr);
         max-width: 1440px; 
-        padding: 0 17px;
-        
+        padding: 0 17px;  
     }
+
+    
 }
 
     
@@ -193,6 +194,10 @@
 }
 
 @media (min-width: 1024px) {
+    .main__contents-items {
+        margin: 46px auto;
+    }
+
     .options__fullScreen {
         max-width: 1500px;
         margin: 0 auto; 

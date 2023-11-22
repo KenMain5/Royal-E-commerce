@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react';
 import './Main.scss'
 import AddSharpIcon from '@mui/icons-material/AddSharp';
 import FEATURED from '/src/data/featured.js'
@@ -31,27 +32,20 @@ function Main() {
   const toggle = (componentSetter, componentState, oppositeSetter) => {
     componentSetter(!componentState); 
     oppositeSetter(false); 
-    
   };  
-
+  //filters item
   const filterItems = (filterOrder) => {
-    setOpenFilterBox(!openFilterBox); 
-    if (filterOrder === 'clothing') {
-      setFilter('clothing');
-
+    if (filterOrder === 'clear') {
+      setItemOrder([...FEATURED]);
+    } else {
+      console.log('this is the filter order', filterOrder); 
+      setFilter(filterOrder); //clear? 
+      let newFiltered = [...FEATURED]; 
+      let result = newFiltered.filter((item) => item.category === filterOrder);
+      setItemOrder(result);
     }
+    setOpenFilterBox(!openFilterBox); 
   };
-
-
-
-
-
-
-
-
-
-
-
 
   //function for sorting
   const sortItems = (sortOrder) => {
@@ -85,6 +79,29 @@ function Main() {
     }
   };
 
+  // const filterBoxRef = useRef(null); 
+  //   const sortBoxRef = useRef(null); 
+
+  //   const handleClickOutside = (event) => {
+  //     if (filterBoxRef.current && !filterBoxRef.current.contains(event.target)) {
+  //       setOpenFilterBox(false);
+  //     }
+  //     if (sortBoxRef.current && !sortBoxRef.current.contains(event.target)) {
+  //       setOpenSortBox(false);
+  //     }
+  //   };
+  
+  //   useEffect(() => {
+  //     document.addEventListener('mousedown', handleClickOutside);
+  //     return () => {
+  //       document.removeEventListener('mousedown', handleClickOutside);
+  //     };
+  //   }, []);
+
+
+  
+
+
   // const filterItems= (value) => {
   //   if (filterOrder === 'clothing') {
   //      let filteredFEATURED = FEATURED.filter((item) => {
@@ -100,6 +117,8 @@ function Main() {
   // const sortItemsFunction = (value) => {
   //   console.log('sorts items'); 
   // };
+
+
 
   
 
@@ -176,10 +195,10 @@ function Main() {
                 <span>Categories</span>
               </div>
               <div className='sortByOption option-left' style={{display: (openFilterBox) ? 'flex': 'none'}}>
-                  <span onClick ={() => filterItems('clear')}>Clear</span>
-                  <span onClick ={() => filterItems('clothing')} >Clothing</span>
-                  <span onClick ={() => filterItems('bags')}>Bags</span>
-                  <span onClick ={() => filterItems('tie')}>Tie</span>
+                  <span onClick ={() => filterItems('Clear Filter')}>Clear</span>
+                  <span onClick ={() => filterItems('Exlusive Clothing')} >Clothing</span>
+                  <span onClick ={() => filterItems('Bags')}>Bags</span>
+                  <span onClick ={() => filterItems('Accessories')}>Tie</span>
               </div>
 
               <div className='options__block'>
@@ -192,7 +211,7 @@ function Main() {
                 <div className='options__block'>
                   <span>{itemOrder.length} products</span>
                 </div>
-                <div className='options__block' onClick={() => {toggle(setOpenSortBox, openSortBox, setOpenFilterBox)}}>
+                <div className='options__block'  onClick={() => {toggle(setOpenSortBox, openSortBox, setOpenFilterBox)}}>
                   <div className='options__icon'><AddSharpIcon/></div>
                   <span>Sort By</span>
                   {/* <div className='addToCart'>
