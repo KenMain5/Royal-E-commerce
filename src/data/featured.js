@@ -16,6 +16,8 @@ import photo15 from  '/src/assets/Featured2/tiee/tiee5new.png'
 import photo16 from  '/src/assets/Featured2/tiee/tiee6new.png'
 import photo17 from  '/src/assets/Featured2/tiee/tiee7new.png'
 import photo18 from  '/src/assets/Featured2/tiee/tiee8new.png'
+import photo19 from '/src/assets/Comingsoon.png'
+
 
 const FEATURED = [
     {'id': 1, 'price': 2890, 'url': photo1, 'name': "Raphael Exclusive", 'category': 'clothing'},
@@ -36,6 +38,9 @@ const FEATURED = [
     {'id': 16, 'price': 825, 'url': photo16, 'name': "Raphael Exclusive", 'category': 'tie'},
     {'id': 17, 'price': 842, 'url': photo17, 'name': "Raphael Exclusive", 'category': 'tie'},
     {'id': 18, 'price': 896, 'url': photo18, 'name': "Raphael Exclusive", 'category': 'tie'},
+    {'id': 19, 'price': 896, 'url': photo19, 'name': "Raphael Exclusive Shoes", 'category': 'comingsoon'},
 ]
 
 export default FEATURED
+
+

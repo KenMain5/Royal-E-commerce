@@ -10,9 +10,9 @@ import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined';
 import {incrementTotalPrice, decrementTotalPrice} from '../../app/features/counter/totalPriceSlice'
 import { useSelector, useDispatch} from 'react-redux'
 import { addToCart, removeFromCart} from '../../app/features/counter/cartSlice';
+import { useRef } from 'react';
 
-
-function Main() {
+function Main({navbarOptions}) {
   const dispatch = useDispatch(); 
   const finalPrice = useSelector((state) => state.totalPrice.value)
   const allItems = useSelector((state) => state.cart.value)
@@ -79,24 +79,34 @@ function Main() {
     }
   };
 
-  // const filterBoxRef = useRef(null); 
-  //   const sortBoxRef = useRef(null); 
+  const filterBoxRef = useRef(null); 
+    const sortBoxRef = useRef(null); 
 
-  //   const handleClickOutside = (event) => {
-  //     if (filterBoxRef.current && !filterBoxRef.current.contains(event.target)) {
-  //       setOpenFilterBox(false);
-  //     }
-  //     if (sortBoxRef.current && !sortBoxRef.current.contains(event.target)) {
-  //       setOpenSortBox(false);
-  //     }
-  //   };
+    const handleClickOutside = (event) => {
+      if (filterBoxRef.current && !filterBoxRef.current.contains(event.target)) {
+        setOpenFilterBox(false);
+      }
+      if (sortBoxRef.current && !sortBoxRef.current.contains(event.target)) {
+        setOpenSortBox(false);
+      }
+    };
   
-  //   useEffect(() => {
-  //     document.addEventListener('mousedown', handleClickOutside);
-  //     return () => {
-  //       document.removeEventListener('mousedown', handleClickOutside);
-  //     };
-  //   }, []);
+    useEffect(() => {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, []);
+
+    useEffect(() => {
+      if (navbarOptions !== null) {
+        if (navbarOptions === 0) filterItems('clothing'); 
+        else if (navbarOptions === 1) filterItems('clothing'); 
+        else if (navbarOptions === 2) filterItems('comingsoon'); 
+        else if (navbarOptions === 3) filterItems('bag');
+        else if (navbarOptions === 4) filterItems('tie');
+      }
+    } ,[navbarOptions]); 
 
 
   
@@ -194,11 +204,11 @@ function Main() {
                 <div className='options__icon'><AddSharpIcon/></div>
                 <span>Categories</span>
               </div>
-              <div className='sortByOption option-left' style={{display: (openFilterBox) ? 'flex': 'none'}}>
-                  <span onClick ={() => filterItems('Clear Filter')}>Clear</span>
-                  <span onClick ={() => filterItems('Exlusive Clothing')} >Clothing</span>
-                  <span onClick ={() => filterItems('Bags')}>Bags</span>
-                  <span onClick ={() => filterItems('Accessories')}>Tie</span>
+              <div className='sortByOption option-left' ref={filterBoxRef}  style={{display: (openFilterBox) ? 'flex': 'none'}}>
+                  <span onClick ={() => filterItems('clear')}>Clear</span>
+                  <span onClick ={() => filterItems('clothing')} >Clothing</span>
+                  <span onClick ={() => filterItems('bag')}>Bags</span>
+                  <span onClick ={() => filterItems('tie')}>Tie</span>
               </div>
 
               <div className='options__block'>
@@ -218,7 +228,7 @@ function Main() {
                       <span>added to cart</span>
                   </div> */}
               </div>
-              <div className='sortByOption option-right' style={{display: (openSortBox) ? 'flex': 'none'}}>
+              <div className='sortByOption option-right' ref={sortBoxRef} style={{display: (openSortBox) ? 'flex': 'none'}}>
                   <span onClick={() => sortItems('clear')}>New Items</span>
                   <span onClick={() => sortItems('ascending')}>Price (low-high)</span>
                   <span onClick={() => sortItems('descending')}>Price (high-low)</span>

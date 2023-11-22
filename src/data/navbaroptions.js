@@ -38,7 +38,8 @@ const NAVBAROPTIONS = [
     {
         category: 'New Arrivals at Royal', //New Arrivals
         description: "Explore the latest offerings and sneaker trends now available at Royal. This is your premier destination for all recent additions, refreshed weekly with exclusive releases and the newest from our expanding circle of designers. Be sure to sign up and stay updated with what's new and noteworthy this month at Royal.", 
-        images: [newarrival1, newarrival2, newarrival3, newarrival4]
+        images: [newarrival1, newarrival2, newarrival3, newarrival4], 
+        
     },
     {
         category: 'Clothing Curations at Royal', //Clothing
