@@ -1,14 +1,20 @@
 .shoppingbag {
-   
+    height: 50.5vh;
 }
 
-.shoppingbag__header {
-    margin: 100px 34px; 
 
-    & .shoppingbag__img {
+.emptybag__header {
+    height: 100%; 
+    margin: 0 auto; 
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin-top: 6rem;
+    
+    & .emptybag__img {
         width: 280px; 
         height: auto; 
-        margin: 0 auto; 
+        
         margin-bottom: 30px;
     
         & img {
@@ -18,27 +24,23 @@
         }
     }
 
-    & .shoppingbag__text {
-        margin: 0 auto; 
+    & .emptybag__text {
         max-width: 250px;
         text-align: center;
-
+        margin: 0 auto; 
         & h4 {
             margin-bottom: 16px;
         }
-
         & span {
             font-size: 14px;
             margin-bottom: 24px;
-
         }
-
     }
 
-    & .shoppingbag__button {
+    & .emptybag__button {
         width: fit-content;
-        margin: 0 auto; 
         padding: 8px;
+        margin: 0 auto; 
 
         & a {
             border-bottom: 1px solid rgb(223, 223, 223); 
@@ -47,12 +49,48 @@
 
             &:hover {
                 border-bottom: 1px solid rgb(0, 0, 0); 
-
             }
-            
         }
-
     }
+}
 
+.shoppingbag__container {
+    margin: 0 1rem;
+    height: 70vh;
+}
 
+.shoppingbag__header {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+
+    & span {
+        &:nth-of-type(1) {
+            font-size: 1.3rem;
+        }
+        &:nth-of-type(2) {
+            font-size: 1rem;
+            margin-top: .7rem;
+            margin-bottom: 1.8rem;
+        }
+    }
+}
+
+.shoppingbag__item {
+    border-top: 1px solid black;
+}
+
+.shoppingbag__item-cont {
+    margin-top: 1rem;
+}
+
+.shoppingbag__item-img {
+    width: 92px;
+    height: 122px; 
+
+    & img {
+        height: 100%; 
+        width: 100%; 
+        object-fit: contain;
+    }
 }

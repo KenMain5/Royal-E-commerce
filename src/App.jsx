@@ -50,6 +50,9 @@ function App() {
               <Offer/>
           </div>
         }/>
+
+       
+
         
       </Routes>
     </Router>

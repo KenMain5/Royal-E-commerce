@@ -28,11 +28,15 @@ function Main({navbarOptions}) {
   const [filter, setFilter] = useState('');
   const [sort, setSort] = useState(''); 
 
+  //toggles for 3 seconds when user adds an item to the cart
+  const [itemAddedWindow, setItemAddedWindow] = useState(false); 
+  
   //receives a setter and currentState and toggles the currentState boolean value
   const toggle = (componentSetter, componentState, oppositeSetter) => {
     componentSetter(!componentState); 
     oppositeSetter(false); 
   };  
+
   //filters item
   const filterItems = (filterOrder) => {
     if (filterOrder === 'clear') {
@@ -47,9 +51,43 @@ function Main({navbarOptions}) {
     setOpenFilterBox(false); 
   };
 
-  
+  /* Method for inserting in the localStorage  */ 
+  const addToCartLocalStorage = (item) => {
+    let cart; 
+    if (!localStorage.getItem('cart')) {
+      cart = {}; 
+    } else {
+      cart = JSON.parse(localStorage.getItem('cart')); 
+    }
+    if (cart[item.id]) {
+      cart[item.id].quantity += 1; 
+    } else {
+      cart[item.id] = item; 
+      cart[item.id].quantity = 1; 
+    }
+    let serializedCart = JSON.stringify(cart); 
+    localStorage.setItem('cart', serializedCart); 
+  }
 
-  //function for sorting
+  /* Method for removing from the localStorage  */ 
+  const subtractFromCartLocalStorage = (item) => {
+    let cart; 
+    if (localStorage.getItem('cart')) {
+      cart = JSON.parse(localStorage.getItem('cart')); 
+     
+      if (cart[item.id]) {
+        if (cart[item.id].quantity > 1) {
+          cart[item.id].quantity -= 1; 
+        } else {
+          delete cart[item.id]; 
+        }
+      }
+      let serializedCart = JSON.stringify(cart); 
+      localStorage.setItem('cart', serializedCart); 
+    } 
+  };
+
+  //Function for sorting the items in the main component
   const sortItems = (sortOrder) => {
     setOpenSortBox(!openSortBox); 
     if (sortOrder === 'ascending') {
@@ -81,8 +119,9 @@ function Main({navbarOptions}) {
     }
   };
 
+  //Ref and function for closing filter and sort box when outside click is done
   const filterBoxRef = useRef(null); 
-    const sortBoxRef = useRef(null); 
+  const sortBoxRef = useRef(null); 
 
     const handleClickOutside = (event) => {
       if (filterBoxRef.current && !filterBoxRef.current.contains(event.target)) {
@@ -110,6 +149,14 @@ function Main({navbarOptions}) {
       }
     } ,[navbarOptions]); 
 
+  //Function that gets triggered when user buys an item
+  const triggerCartAdded = () => {
+    setItemAddedWindow(true); 
+    console.log('state of addedWindow', itemAddedWindow)
+    setTimeout(() => {
+      setItemAddedWindow(false);
+    }, 4000); 
+  }
 
   //Keeps track of what is favorited, UI change
   const [cart, setCart] = useState([]); 
@@ -122,14 +169,22 @@ function Main({navbarOptions}) {
       let index = newCart.indexOf(value.id);
       newCart.splice(index, 1)
       setCart(newCart); 
-      dispatch(addToCart(value.name)); 
-      dispatch(incrementTotalPrice(value.price)); 
-    } else {
-      setCart((prev) => [...prev, value.id]); 
       dispatch(removeFromCart(value.name)); 
       dispatch(decrementTotalPrice(value.price)); 
+      console.log('first if triggered'); 
+
+    } else {
+      setCart((prev) => [...prev, value.id]); 
+      dispatch(addToCart(value.name)); 
+      dispatch(incrementTotalPrice(value.price)); 
+      console.log('bought else triggered'); 
+      triggerCartAdded(); 
     }
   };
+
+ 
+
+
 
   
 
@@ -180,11 +235,18 @@ function Main({navbarOptions}) {
             </div>
             {/* Right */}
             <div className='options__fullScreen-right'>
-                <div className='addedToCartNotif'>
-                    <span>The item was added to your cart</span>
-                </div>
+                  {/* Test */}
+                  <div className='priceTest'>
+                    <span>{finalPrice}</span>
+                  </div>
+                   {/* Test */}
+                
                 <div className='options__block'>
+                  
                   <span>{itemOrder.length} products</span>
+                  <div style={{display: (itemAddedWindow) ? 'flex': 'none'}} className='addedToCartNotif'>
+                    <span>The item was added to your cart</span>
+                  </div>
                 </div>
                 <div className='options__block'  onClick={() => {toggle(setOpenSortBox, openSortBox, setOpenFilterBox)}}>
                   <div className='options__icon'><AddSharpIcon/></div>
