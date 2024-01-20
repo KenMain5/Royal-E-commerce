@@ -1,4 +1,3 @@
-import React from 'react'
 import './NavbarSelections.scss'
 import bag1 from '../../assets/NavbarSelections/Bags/AdobeStock_480885603.jpeg'
 import bag2 from '../../assets/NavbarSelections/Bags/AdobeStock_570956545.jpeg'

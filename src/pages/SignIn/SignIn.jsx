@@ -1,4 +1,3 @@
-import React from 'react'
 import './SignIn.scss'
 import SectionDivider from '/src/components/sectionDivider/SectionDivider'
 import { Link } from 'react-router-dom';

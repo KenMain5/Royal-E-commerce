@@ -1,21 +1,23 @@
-import React from 'react'
 import './Shoppingbag.scss'
 // import DiamondSharpIcon from '@mui/icons-material/DiamondSharp';
 // https://mui.com/material-ui/material-icons/?query=diamond
 import bagIMG from '../../assets/shoppingbag.png';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch} from 'react-redux'
-import { addToCart, removeFromCart} from '../../app/features/counter/cartSlice';
 
 
 function Shoppingbag() {
     const dispatch = useDispatch(); 
     const finalPrice = useSelector((state) => state.totalPrice.value)
-    const allItems = useSelector((state) => state.cart.value)
+    const allItems = useSelector((state) => state.cart) //removed the value
+    
   return (
     <div className='shoppingbag'>
-        {(allItems.length === 0) ?
+        {(Object.keys(allItems).length === 0) ?
+        
         <div className='emptybag__header'>
+        
+
             <div className='emptybag__img'>
                 <img src={ bagIMG }></img>
             </div>
@@ -28,41 +30,53 @@ function Shoppingbag() {
             </div>
         </div>: 
         <div className='shoppingbag__container'>
+           
             <div className='shoppingbag__header'>
                 <span>Shopping Bag</span>
                 <span># of items</span>
             </div>
-            {/* This will be a "map" */}
-            <div className='shoppingbag__item'>
+            {Object.entries(allItems).map(([key, value]) => (
+               
+            <div key={key} className='shoppingbag__item'>
+                {console.log(key, 'this is the keys', value, "this is the value")}
+
+                {/* {console.log(Object.keys(allItems), 'this is the object keys')}
+                {console.log((allItems), 'this is all items ')} */}
                 <div className='shoppingbag__item-cont'>
                    <div className='shoppingbag__item-img'>
-                        <img src='/Royal-E-commerce/src/assets/Comingsoon.png'></img>
+                        <img src={value.url}></img>
                    </div>
                    <div className='shoppingbag__item-col'> 
-                        <span>Artist</span>
-                        <span>Item Name</span>
+                        <span>{value.name}</span>  
+                        <span>{value.category}</span>
                         <div className='shoppingbag__item-row'>
-                            <span>Color</span>
-                            <span>Qty: 1</span>
+                            <span>Black</span>
+                            <span>Qty: {value.quantity}</span>
                         </div>
-                        <span>Price</span>
+                        <span>${value.price}</span>
                    </div>
                 </div>
-                <span>Remove from Bag</span>
+                <div className='removeButton'><span>Remove from Bag</span></div>
             </div>
+            ))}
 
-            <div>
+
+            <div className='shoppingbag__orderSumm'>
                 <span>Order Summary</span>
-                <span>Item Sub-Total</span>
-                <span>Total(USD)</span>
-                <div>
-                    <span>Local taxes may apply at checkout</span>
-                    <button>Proceed to</button>
+                <div className='shoppingbag__orderSumm-text'>
+                    <span>Item Sub-Total</span>
+                    <span>$2410</span>
+                </div>
+                <div className='shoppingbag__orderSumm-text'>
+                    <span>Total(USD)</span>
+                    <span>$2410</span>
+                </div>
+                <div className='shoppingbag__checkout'>
+                    <div className='shoppingbag__checkout-tax'><span>Local taxes may apply at checkout</span></div>
+                    <div className='shoppingbag__checkout-button'><button>Proceed to purchase</button></div>
                 </div>
             </div>
 
-            <span>here are the items</span>
-            <span>Here's the final price {finalPrice}</span>
         </div>
     }
        

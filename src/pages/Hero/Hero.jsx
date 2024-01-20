@@ -1,4 +1,3 @@
-import React from 'react'
 import './Hero.scss'
 import heroPicture2 from '/src/assets/herobacktrial.jpg'
 import { useEffect, useState } from 'react'

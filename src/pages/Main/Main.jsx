@@ -1,4 +1,3 @@
-import React from 'react'
 import { useEffect } from 'react';
 import './Main.scss'
 import AddSharpIcon from '@mui/icons-material/AddSharp';
@@ -9,13 +8,13 @@ import { useState } from 'react';
 import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined';
 import {incrementTotalPrice, decrementTotalPrice} from '../../app/features/counter/totalPriceSlice'
 import { useSelector, useDispatch} from 'react-redux'
-import { addToCart, removeFromCart} from '../../app/features/counter/cartSlice';
+import { addItemToCart, removeFromCart} from '../../app/features/counter/cartSlice';
 import { useRef } from 'react';
 
 function Main({navbarOptions}) {
   const dispatch = useDispatch(); 
   const finalPrice = useSelector((state) => state.totalPrice.value)
-  const allItems = useSelector((state) => state.cart.value)
+  const allItems = useSelector((state) => state.cart)
 
   //states that prompt specific filter options to pop out 
   const [openFilterBox, setOpenFilterBox] = useState(false); 
@@ -51,7 +50,7 @@ function Main({navbarOptions}) {
     setOpenFilterBox(false); 
   };
 
-  /* Method for inserting in the localStorage  */ 
+  /* Function for inserting in the localStorage  */ 
   const addToCartLocalStorage = (item) => {
     let cart; 
     if (!localStorage.getItem('cart')) {
@@ -65,11 +64,12 @@ function Main({navbarOptions}) {
       cart[item.id] = item; 
       cart[item.id].quantity = 1; 
     }
+    console.log(cart, 'this is the cart');
     let serializedCart = JSON.stringify(cart); 
     localStorage.setItem('cart', serializedCart); 
   }
 
-  /* Method for removing from the localStorage  */ 
+  /* Function for removing from the localStorage  */ 
   const subtractFromCartLocalStorage = (item) => {
     let cart; 
     if (localStorage.getItem('cart')) {
@@ -78,6 +78,7 @@ function Main({navbarOptions}) {
       if (cart[item.id]) {
         if (cart[item.id].quantity > 1) {
           cart[item.id].quantity -= 1; 
+          
         } else {
           delete cart[item.id]; 
         }
@@ -86,6 +87,48 @@ function Main({navbarOptions}) {
       localStorage.setItem('cart', serializedCart); 
     } 
   };
+
+  //Function for adding items into the global state
+  const addToCartReduxStore = (item) => {
+    dispatch(addItemToCart(item));
+    console.log(item); 
+   
+    //if its add, then 
+  }
+
+  const removeFromCartReduxStore = (item) => {
+    dispatch(removeFromCart(item)); 
+  }
+
+  // const addQuantityToItemReduxStore = (item) => {
+   
+  // }
+
+  /*
+  const trialFunction = function(value) {
+    if (cart.includes(value.id)) {
+      let newCart = [...cart]; 
+      let index = newCart.indexOf(value.id);
+      newCart.splice(index, 1)
+      setCart(newCart); 
+      dispatch(removeFromCart(value.name)); 
+      dispatch(decrementTotalPrice(value.price)); 
+      console.log('first if triggered'); 
+
+    } else {
+      setCart((prev) => [...prev, value.id]); 
+      dispatch(addToCart(value.name)); 
+      dispatch(incrementTotalPrice(value.price)); 
+      console.log('bought else triggered'); 
+      triggerCartAdded(); 
+    }
+  };
+  
+  
+  */ 
+
+
+
 
   //Function for sorting the items in the main component
   const sortItems = (sortOrder) => {
@@ -163,21 +206,21 @@ function Main({navbarOptions}) {
 
   /*Function gets invoked when the star icon is pressed, it gets added 
   or removed cart items from the global state, as well as the price*/
-  const trialFunction = function(value) {
-    if (cart.includes(value.id)) {
+  const trialFunction = function(item) {
+    if (cart.includes(item.id)) {
       let newCart = [...cart]; 
-      let index = newCart.indexOf(value.id);
+      let index = newCart.indexOf(item.id);
       newCart.splice(index, 1)
       setCart(newCart); 
-      dispatch(removeFromCart(value.name)); 
-      dispatch(decrementTotalPrice(value.price)); 
-      console.log('first if triggered'); 
+
+
+      subtractFromCartLocalStorage(item); 
+      removeFromCartReduxStore(item); 
 
     } else {
-      setCart((prev) => [...prev, value.id]); 
-      dispatch(addToCart(value.name)); 
-      dispatch(incrementTotalPrice(value.price)); 
-      console.log('bought else triggered'); 
+      setCart((prev) => [...prev, item.id]); 
+      addToCartLocalStorage(item); 
+      addToCartReduxStore(item)
       triggerCartAdded(); 
     }
   };

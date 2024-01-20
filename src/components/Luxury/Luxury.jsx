@@ -1,4 +1,3 @@
-import React from 'react'
 import './Luxury.scss'
 import DiamondOutlinedIcon from '@mui/icons-material/DiamondOutlined';
 import DiamondIcon from '@mui/icons-material/Diamond';

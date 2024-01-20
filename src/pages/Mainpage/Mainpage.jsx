@@ -1,4 +1,3 @@
-import React from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import Main from '../Main/Main'
 import Offer from '../../components/Offer/Offer'

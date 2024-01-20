@@ -18,9 +18,6 @@ function App() {
         <Route path='/' element={
           <div>
               <Mainpage />
-             
-            
-              
           </div>
         }/>
 
@@ -42,7 +39,16 @@ function App() {
           </div>
         }/>
 
-          <Route path='/shoppingbag' element={
+        <Route path='/shoppingbag' element={
+          <div>
+              <Banner/>
+              <Navbar/>
+              <Shoppingbag/>
+              <Offer/>
+          </div>
+        }/>
+
+        <Route path='/shoppingbag2' element={
           <div>
               <Banner/>
               <Navbar/>

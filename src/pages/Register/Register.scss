@@ -43,6 +43,9 @@
             }
         }
 
+       
+
+
         & .register__textBox-small {
             margin-top: 6px;
             height: 48px; 
@@ -117,3 +120,15 @@
         margin: 23px auto;
     }
 }
+
+
+.register__form-error {
+    margin-top: .1rem;
+    font-size: 14px;
+    letter-spacing: .2px;
+    line-height: 18px;
+    color: rgb(182, 2, 24);
+}
+
+
+

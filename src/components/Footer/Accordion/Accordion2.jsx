@@ -1,4 +1,3 @@
-import React from 'react'
 import './Accordion.scss'
 import { useState } from 'react'
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';

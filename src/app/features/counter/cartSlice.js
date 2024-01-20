@@ -1,30 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
-    value: [], 
-}
-/* Although we're aware that REDUX TOOLKIT lets us modify these items, 
-we won't for the sake of immutabality. ". The use of ...state makes 
-sure you're always returning the complete state object with any updates 
-applied to the parts you intend to change." */
+const initialState = {}
+
 export const cartSlice = createSlice({
     name: 'cart', 
     initialState, 
     reducers: {
-        /* Adds item to cart, only one quantity can be bought per item as of now */
-        addToCart: (state, action) => {
-            let itemArrays = [...state.value]; 
-            itemArrays.push(action.payload); 
-            
-            return {
-                ...state, 
-                value: itemArrays
-            }
+        //in this case, the action would be the item itself.. 
+        addItemToCart: (state, action) => {
+            console.log('State before addItemToCart:', JSON.parse(JSON.stringify(state)));
 
-        }, 
-        /* Removes item to cart, only one quantity can be bought per item as of now.*/
+            const item = action.payload; 
+            if (state[item.id]) {
+                // Directly increment the quantity
+                state[item.id].quantity += 1; 
+                
+            } else {
+                // Directly assign the item with initial quantity
+                state[item.id] = {...item, quantity: 1};
+                
+
+            }
+            console.log('State after addItemToCart:', JSON.parse(JSON.stringify(state)));
+
+        },
         removeFromCart: (state, action) => {
-            let itemArrays = [...state.value]; 
+            //
+            
             if (itemArrays.indexOf(action.payload) !== -1) {
                 itemArrays.splice(itemArrays.indexOf(action.payload), 1);
                 
@@ -38,5 +40,5 @@ export const cartSlice = createSlice({
     }
 })
 
-export const {addToCart, removeFromCart} = cartSlice.actions;
+export const {addItemToCart, removeFromCart} = cartSlice.actions;
 export default cartSlice.reducer 
