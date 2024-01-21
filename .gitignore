@@ -23,5 +23,12 @@ dist-ssr
 *.sln
 *.sw?
 
+#Server Side
+schema.sql 
+database
+
+
 #Kens Notes
-notes
+Notes
+.eslintrc.cjs
+
