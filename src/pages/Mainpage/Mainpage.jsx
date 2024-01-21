@@ -5,10 +5,7 @@ import { useState, useEffect } from 'react'
 import Banner from '../../components/Banner/Banner'
 import Hero from '../Hero/Hero'
 
-
-
 function Mainpage() {
-    
     const [navbarOptions, setNavbarOptions] = useState(null); 
     const handleNavbarClick = (value) => {
         setNavbarOptions(value);
@@ -31,7 +28,6 @@ function Mainpage() {
         <Hero navbarOptions={navbarOptions} />
         <Main navbarOptions={navbarOptions} />
         <Offer />
-
     </main>
   )
 }

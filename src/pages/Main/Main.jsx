@@ -5,7 +5,6 @@ import FEATURED from '/src/data/featured.js'
 import StarBorderPurple500SharpIcon from '@mui/icons-material/StarBorderPurple500Sharp';
 import StarPurple500OutlinedIcon from '@mui/icons-material/StarPurple500Outlined';
 import { useState } from 'react';
-import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined';
 import {incrementTotalPrice, decrementTotalPrice} from '../../app/features/counter/totalPriceSlice'
 import { useSelector, useDispatch} from 'react-redux'
 import { addItemToCart, removeFromCart} from '../../app/features/counter/cartSlice';

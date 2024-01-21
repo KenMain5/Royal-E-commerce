@@ -13,7 +13,7 @@ function Register() {
 
   const [password, setPassword] = useState(''); 
   const [passwordError, setPasswordError] = useState('');
-  const [passwordValidated, setPasswordValidated] = useState(null); 
+  const [passwordValidated, setPasswordValidated] = useState(false); 
   const [passwordTouched, setPasswordTouched] = useState(false);
 
 
@@ -39,7 +39,7 @@ function Register() {
   const [monthDOBTouched, setMonthDOBTouched] = useState(false);
 
 
-  const [yearDOB, setYearDOB] = useState(); 
+  const [yearDOB, setYearDOB] = useState(''); 
   const [yearDOBValidated, setYearDOBValidated] = useState(false); 
   const [yearDOBTouched, setYearDOBTouched] = useState(false);
 
@@ -142,7 +142,6 @@ function Register() {
 
     const handleMonthDOB = (newState) => {
       setMonthDOBTouched(true);
-
       setMonthDOB(newState); 
       let error = handleMonthValidation(newState); 
       setMonthDOBValidated(!error);
@@ -183,13 +182,18 @@ function Register() {
         dayDOBValidated && 
         monthDOBValidated && 
         yearDOBValidated) {
+          console.log("form is validated"); 
+
           setFormValidated(true); 
+        } else {
+          console.log('changes done');
         }
     }
 
   //function to send the data to the server
   const sendData = (event) => {
     event.preventDefault(); 
+    console.log('about to send data');
    
     let userData = {
       emailAddress: emailAddress, 
@@ -206,7 +210,7 @@ function Register() {
       console.log('success', results); 
     })
     .catch(err => {
-      console.log("there was an error",err); 
+      console.log("there was an error", err.response); 
     })
   } 
 
@@ -238,7 +242,7 @@ function Register() {
               <label htmlFor='password'>Password</label>
               
               <div className='register__textBox'  style={{ border: passwordTouched && !passwordValidated ? '1px solid rgb(182, 2, 24)' : '' }}>
-                <input value={password} type='password' onChange={(e) => {handlePasswordChange(e.target.value)}} id='password' name='password'></input>
+                <input value={password}  type='password' onChange={(e) => {handlePasswordChange(e.target.value)}} id='password' name='password'></input>
                 {/* New Code */}
                 <div className='register__form-error'>
                   <span>{passwordError}</span>
@@ -301,7 +305,6 @@ function Register() {
                
 
                 </div>
-             
             </div>
             <div className='form__button-container '><button disabled={formValidated ? false: true} onClick={(e) => sendData(e)} id="sendButton" className='form__button form__button-stylesBlack' type='submit'>Create Account</button></div>
          

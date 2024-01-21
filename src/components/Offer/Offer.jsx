@@ -1,6 +1,5 @@
 import './Offer.scss'
 
-
 function Offer() {
   return (
     <section className='offer'>
@@ -18,10 +17,10 @@ function Offer() {
                 </form>
             </div>
             <div className='right'>
-                <span  className='style1'>need help?</span>
-                <span  className='style2'>For any enquiries please visit ROYAL customer care</span>
-                <span  className='style1'>change location</span>
-                <span  className='style2'>United States</span>
+                <span className='style1'>need help?</span>
+                <span className='style2'>For any enquiries please visit ROYAL customer care</span>
+                <span className='style1'>change location</span>
+                <span className='style2'>United States</span>
             </div>
         </div>
     </section>

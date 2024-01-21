@@ -1,11 +1,9 @@
 import './Luxury.scss'
 import DiamondOutlinedIcon from '@mui/icons-material/DiamondOutlined';
-import DiamondIcon from '@mui/icons-material/Diamond';
-import DiamondRoundedIcon from '@mui/icons-material/DiamondRounded';
-import DiamondTwoToneIcon from '@mui/icons-material/DiamondTwoTone';
-import DiamondSharpIcon from '@mui/icons-material/DiamondSharp';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import LanguageIcon from '@mui/icons-material/Language';
+
+
 function Luxury() {
   return (
     <div className='showcase'>
