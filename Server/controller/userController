@@ -19,11 +19,8 @@ function validateUserData(data) {
 
 // function to check if the email has already been used.. 
 
-
-
 module.exports = {
     registerUser: function(req, res){
-
         const validationError = validateUserData(req.body);
         if (validationError) {
             console.log('data is not valid')
