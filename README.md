@@ -1,7 +1,7 @@
 <h1 align='center'>
   Royal - E-Commerce 
 </h1>
-
+<img src="client/src/assets/ReadMeDoc/readme.png"></img> 
 
 
 
