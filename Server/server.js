@@ -5,8 +5,9 @@ const path = require('path');
 const app = express(); 
 const userController = require('./controller/userController'); 
 
-const indexFile = path.join(__dirname, '../Royal-E-commerce/dist/index.html');
-const distPath = path.join(__dirname, '../Royal-E-commerce/dist');
+const indexFile = path.join(__dirname, '../client/dist/index.html');
+const distPath = path.join(__dirname, '../client/dist');
+
 
 //needed if using formData API 
 //app.use(express.urlencoded({ extended: true }));
