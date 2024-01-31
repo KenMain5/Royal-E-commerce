@@ -42,6 +42,14 @@ npm start
 
 
 # Endpoints
+<details>
+  <summary>GET /</summary>
+  <br>
+  <div>
+	This is the endpoint that the client request gets when they access the website. The server sends the main page of the website. 
+  </div>
+  <br>
+</details>
 
 <details>
   <summary>POST /register</summary>
