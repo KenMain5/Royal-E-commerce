@@ -2,6 +2,7 @@
   Royal - E-Commerce 
 </h1>
 <img src="client/src/assets/ReadMeDoc/readme.png"></img> 
+<img src="client/src/assets/ReadMeDoc/readme2.png"></img> 
 
 
 
