@@ -9,7 +9,6 @@ function SignIn() {
   const [emailAddress, setEmailAddress] = useState(''); 
   const [password, setPassword] = useState(''); 
 
-  
   const handleInputChange = (state, stateHandler) => {
     stateHandler(state); 
   };
@@ -22,7 +21,11 @@ function SignIn() {
       password: password
     }
 
-    axios.post('/signin', data)
+    axios.post('http://localhost:8080/user/login', data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     .then(() => {
       console.log('axios post request signIn sent'); 
     })

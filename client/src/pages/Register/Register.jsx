@@ -189,23 +189,28 @@ function Register() {
           console.log('changes done');
         }
     }
+  const formattedDOB = `${yearDOB}-${monthDOB.padStart(2, '0')}-${dayDOB.padStart(2, '0')}`;
+
+  
 
   //function to send the data to the server
   const sendData = (event) => {
     event.preventDefault(); 
     console.log('about to send data');
    
-    let userData = {
-      emailAddress: emailAddress, 
-      password: password, 
+    let data = {
+      email: emailAddress, 
+      pass: password, 
       firstName: firstName, 
       lastName: lastName, 
-      dayDOB: dayDOB, 
-      monthDOB: monthDOB, 
-      yearDOB: yearDOB
+      dob: formattedDOB
     }
 
-    axios.post('/register', userData)
+    axios.post('http://localhost:8080/user/register', data, {
+      headers: {
+        "Content-Type": "Application/json"
+      }
+    })
     .then(results => {
       console.log('success', results); 
     })
@@ -213,6 +218,8 @@ function Register() {
       console.log("there was an error", err.response); 
     })
   } 
+
+
 
 
 
